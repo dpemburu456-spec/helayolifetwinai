@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0e27">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>HELAYO LIFE TWIN AI - REAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1f3a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6c5ce7, #00b894);
+            border-radius: 10px;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-dark {
+            background: rgba(10, 14, 39, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6c5ce7, #00b894, #fdcb6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(108, 92, 231, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(108, 92, 231, 0.4); }
+        }
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .score-ring {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .score-ring::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #0a0e27;
+        }
+        .score-ring span {
+            position: relative;
+            z-index: 1;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 10px 0 env(safe-area-inset-bottom);
+            z-index: 100;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            color: #6b7280;
+            font-size: 0.65rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+        }
+        .nav-item.active {
+            color: #6c5ce7;
+        }
+        .nav-item.active i {
+            background: rgba(108, 92, 231, 0.2);
+            padding: 6px;
+            border-radius: 12px;
+        }
+        .nav-item i {
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .feature-card:active {
+            transform: scale(0.95);
+        }
+        
+        .chat-bubble-user {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            border-radius: 18px 18px 4px 18px;
+            padding: 12px 16px;
+            max-width: 80%;
+            margin-left: auto;
+        }
+        .chat-bubble-ai {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 18px 18px 18px 4px;
+            padding: 12px 16px;
+            max-width: 80%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-primary:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-secondary:active {
+            transform: scale(0.95);
+        }
+        
+        input, textarea, select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: white;
+            width: 100%;
+            transition: all 0.3s;
+            outline: none;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #6c5ce7;
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.1);
+        }
+        input::placeholder, textarea::placeholder {
+            color: #6b7280;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: #1a1f3a;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6c5ce7, #00b894);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .badge {
+            background: #e74c3c;
+            color: white;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            position: absolute;
+            top: -4px;
+            right: -8px;
+        }
+        
+        @keyframes voice-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .voice-btn.active {
+            animation: voice-pulse 0.8s ease-in-out infinite;
+            background: rgba(108, 92, 231, 0.3);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 24px;
+            border-radius: 12px;
+            z-index: 999;
+            display: none;
+            animation: slideUp 0.3s ease;
+        }
+        .toast.show {
+            display: block;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast"></div>
+
+    <!-- HEADER -->
+    <header class="glass-dark px-4 py-3 sticky top-0 z-50" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="flex items-center justify-between max-w-md mx-auto">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-green-400 flex items-center justify-center">
+                    <i class="fas fa-robot text-white text-sm"></i>
+                </div>
+                <div>
+                    <h1 class="text-sm font-bold gradient-text">HELAYO LIFE</h1>
+                    <p class="text-[10px] text-gray-400 -mt-0.5">TWIN AI · <span id="headerVersion">v2.0 REAL</span></p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="relative cursor-pointer" onclick="showToast('📬 3 notifikasi baru dari Twin AI')">
+                    <i class="fas fa-bell text-gray-400 text-lg"></i>
+                    <span class="badge" id="notifCount">3</span>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center cursor-pointer" onclick="resetData()">
+                    <i class="fas fa-user text-white text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-md mx-auto px-4 pt-4 pb-4">
+
+        <!-- ========== PAGE 1: DASHBOARD ========== -->
+        <div id="page-dashboard" class="page active">
+            
+            <div class="glass rounded-2xl p-6 neon-glow pulse-glow">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-400 text-xs">TWIN SCORE</p>
+                        <p class="text-3xl font-bold gradient-text" id="twinScore">84</p>
+                        <p class="text-xs text-green-400 mt-1" id="scoreChange"><i class="fas fa-arrow-up"></i> +6% minggu ini</p>
+                    </div>
+                    <div class="score-ring" id="scoreRing" style="background: conic-gradient(#6c5ce7 0% 84%, #1a1f3a 84% 100%);">
+                        <span id="scoreRingText">84</span>
+                    </div>
+                </div>
+                <div class="mt-3 flex gap-2">
+                    <span class="text-xs px-3 py-1 rounded-full bg-purple-500/20 text-purple-300" id="userLevel">Level: Pro</span>
+                    <span class="text-xs px-3 py-1 rounded-full bg-green-500/20 text-green-300" id="userStreak">14 hari aktif</span>
+                </div>
+            </div>
+            
+            <div class="glass rounded-2xl p-5 mt-4 border-l-4 border-purple-500" id="aiInsightBox">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-lightbulb text-purple-400"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400">AI INSIGHT HARI INI</p>
+                        <p class="text-sm font-medium mt-1" id="aiInsightText">Kurangi pengeluaran 15% untuk mencapai target rumah 8 bulan lebih cepat.</p>
+                        <p class="text-xs text-gray-500 mt-2"><i class="far fa-clock"></i> <span id="insightTime">Berdasarkan analisis 30 hari terakhir</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Life Radar -->
+            <div class="glass rounded-2xl p-5 mt-4">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-bold">🔄 Life Radar</h3>
+                    <span class="text-xs text-gray-400" id="radarAvg">Skor rata-rata: 72</span>
+                </div>
+                <div class="relative w-full max-w-[280px] mx-auto">
+                    <canvas id="radarCanvas" width="280" height="280"></canvas>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-4 gap-2 mt-4" id="quickStats">
+                <div class="glass rounded-xl p-3 text-center">
+                    <p class="text-lg font-bold text-purple-400" id="statFinance">Rp 8.4J</p>
+                    <p class="text-[10px] text-gray-400">Keuangan</p>
+                </div>
+                <div class="glass rounded-xl p-3 text-center">
+                    <p class="text-lg font-bold text-green-400" id="statHealth">78%</p>
+                    <p class="text-[10px] text-gray-400">Kesehatan</p>
+                </div>
+                <div class="glass rounded-xl p-3 text-center">
+                    <p class="text-lg font-bold text-blue-400" id="statCareer">92%</p>
+                    <p class="text-[10px] text-gray-400">Karier</p>
+                </div>
+                <div class="glass rounded-xl p-3 text-center">
+                    <p class="text-lg font-bold text-yellow-400" id="statTarget">65%</p>
+                    <p class="text-[10px] text-gray-400">Target</p>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="grid grid-cols-4 gap-2 mt-4">
+                <button class="glass rounded-xl p-3 text-center feature-card" onclick="showPage('page-chat')">
+                    <i class="fas fa-robot text-purple-400 text-xl"></i>
+                    <p class="text-[10px] text-gray-400 mt-1">Twin Chat</p>
+                </button>
+                <button class="glass rounded-xl p-3 text-center feature-card" onclick="showPage('page-future')">
+                    <i class="fas fa-clock text-blue-400 text-xl"></i>
+                    <p class="text-[10px] text-gray-400 mt-1">Time Machine</p>
+                </button>
+                <button class="glass rounded-xl p-3 text-center feature-card" onclick="showPage('page-target')">
+                    <i class="fas fa-bullseye text-green-400 text-xl"></i>
+                    <p class="text-[10px] text-gray-400 mt-1">Target</p>
+                </button>
+                <button class="glass rounded-xl p-3 text-center feature-card" onclick="showPage('page-finance')">
+                    <i class="fas fa-coins text-yellow-400 text-xl"></i>
+                    <p class="text-[10px] text-gray-400 mt-1">Financial</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 2: CHAT ========== -->
+        <div id="page-chat" class="page">
+            <div class="flex items-center gap-3 mb-4">
+                <button onclick="showPage('page-dashboard')" class="text-gray-400">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-green-400 flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold">Twin AI</p>
+                        <p class="text-[10px] text-green-400"><i class="fas fa-circle text-[6px]"></i> Online</p>
+                    </div>
+                </div>
+                <div class="ml-auto flex gap-2">
+                    <button class="voice-btn w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center" onclick="toggleVoice()">
+                        <i class="fas fa-microphone text-purple-400 text-sm"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center" onclick="clearChat()">
+                        <i class="fas fa-trash text-purple-400 text-sm"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="space-y-3 mb-4 max-h-[400px] overflow-y-auto" id="chatMessages">
+                <!-- Messages will be loaded from localStorage -->
+            </div>
+            
+            <div class="flex gap-2 glass rounded-2xl p-2">
+                <input type="text" id="chatInput" placeholder="Tanyakan apa saja..." class="flex-1 bg-transparent border-none text-sm placeholder-gray-500 outline-none">
+                <button onclick="sendMessage()" class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-green-400 flex items-center justify-center">
+                    <i class="fas fa-paper-plane text-white text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 3: FUTURE ========== -->
+        <div id="page-future" class="page">
+            <div class="flex items-center gap-3 mb-4">
+                <button onclick="showPage('page-dashboard')" class="text-gray-400">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <h2 class="text-lg font-bold">⏳ Time Machine</h2>
+            </div>
+            
+            <div class="glass rounded-2xl p-5">
+                <p class="text-sm text-gray-400">Lihat versi dirimu di masa depan berdasarkan aktivitas saat ini.</p>
+                
+                <div class="mt-4 space-y-3" id="futureList">
+                    <!-- Generated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="glass rounded-2xl p-5 mt-4">
+                <h3 class="text-sm font-bold mb-3">🎯 Future Me Simulator</h3>
+                <p class="text-xs text-gray-400 mb-3" id="simulatorQuestion">"Kalau saya terus seperti sekarang, bagaimana kondisi saya 5 tahun lagi?"</p>
+                
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="glass rounded-xl p-3 text-center">
+                        <p class="text-xs text-green-400">Terbaik</p>
+                        <p class="text-sm font-bold text-green-400" id="bestScenario">+340%</p>
+                    </div>
+                    <div class="glass rounded-xl p-3 text-center">
+                        <p class="text-xs text-blue-400">Normal</p>
+                        <p class="text-sm font-bold text-blue-400" id="normalScenario">+85%</p>
+                    </div>
+                    <div class="glass rounded-xl p-3 text-center">
+                        <p class="text-xs text-red-400">Terburuk</p>
+                        <p class="text-sm font-bold text-red-400" id="worstScenario">-20%</p>
+                    </div>
+                </div>
+                
+                <button class="btn-primary w-full mt-3 text-sm" onclick="simulateFuture()">
+                    <i class="fas fa-robot mr-2"></i> Simulasikan dengan AI
+                </button>
+            </div>
+            
+            <div class="glass rounded-2xl p-5 mt-4">
+                <h3 class="text-sm font-bold mb-3">📝 Catat Keputusan</h3>
+                <textarea id="decisionInput" rows="2" placeholder="Tulis keputusan penting yang ingin kamu ambil..." class="text-sm"></textarea>
+                <button class="btn-primary w-full mt-2 text-sm" onclick="saveDecision()">
+                    <i class="fas fa-save mr-2"></i> Simpan Keputusan
+                </button>
+                <div id="decisionList" class="mt-3 space-y-2"></div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 4: TARGET ========== -->
+        <div id="page-target" class="page">
+            <div class="flex items-center gap-3 mb-4">
+                <button onclick="showPage('page-dashboard')" class="text-gray-400">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <h2 class="text-lg font-bold">🎯 Dream Tracker</h2>
+            </div>
+            
+            <div class="glass rounded-2xl p-5">
+                <div class="flex items-center justify-between">
+                    <p class="text-sm text-gray-400">Impian & Target Hidup</p>
+                    <button class="text-xs text-purple-400" onclick="addDream()">+ Tambah</button>
+                </div>
+                
+                <div class="space-y-3 mt-3" id="dreamList">
+                    <!-- Generated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="glass rounded-2xl p-5 mt-4">
+                <h3 class="text-sm font-bold mb-3">📊 Progress Overview</h3>
+                <div id="progressOverview">
+                    <div class="flex justify-between text-xs text-gray-400 mb-1">
+                        <span>Total Target</span>
+                        <span id="totalTargets">0</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-400 mb-1">
+                        <span>Rata-rata Progress</span>
+                        <span id="avgProgress">0%</span>
+                    </div>
+                    <div class="progress-bar mt-2">
+                        <div class="fill" id="overallProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAGE 5: FINANCE ========== -->
+        <div id="page-finance" class="page">
+            <div class="flex items-center gap-3 mb-4">
+                <button onclick="showPage('page-dashboard')" class="text-gray-400">
+                    <i class="fas fa-arrow-left text-xl"></i>
+                </button>
+                <h2 class="text-lg font-bold">💰 Financial Twin</h2>
+            </div>
+            
+            <div class="glass rounded-2xl p-5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-gray-400">Total Aset</p>
+                        <p class="text-2xl font-bold gradient-text" id="totalAsset">Rp 127.5J</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-green-400" id="assetGrowth"><i class="fas fa-arrow-up"></i> +8.2%</p>
+                        <p class="text-xs text-gray-500">bulan ini</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <div class="glass rounded-xl p-3">
+                        <p class="text-xs text-gray-400">Pemasukan</p>
+                        <p class="text-lg font-bold text-green-400" id="incomeDisplay">Rp 9.2J</p>
+                        <p class="text-xs text-gray-500">/ bulan</p>
+                    </div>
+                    <div class="glass rounded-xl p-3">
+                        <p class="text-xs text-gray-400">Pengeluaran</p>
+                        <p class="text-lg font-bold text-red-400" id="expenseDisplay">Rp 6.8J</p>
+                        <p class="text-xs text-gray-500">/ bulan</p>
+                    </div>
+                </div>
+                
+                <div class="mt-4 flex gap-2">
+                    <button class="btn-secondary flex-1 text-xs" onclick="updateFinance('income')">+ Tambah Income</button>
+                    <button class="btn-secondary flex-1 text-xs" onclick="updateFinance('expense')">+ Tambah Expense</button>
+                </div>
+            </div>
+            
+            <div class="glass rounded-2xl p-5 mt-4">
+                <h3 class="text-sm font-bold mb-3">📊 AI Financial Insight</h3>
+                <div id="financialInsights">
+                    <!-- Generated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="glass rounded-2xl p-5 mt-4">
+                <h3 class="text-sm font-bold mb-3">📈 Portofolio</h3>
+                <div id="portfolioList">
+                    <!-- Generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="showPage('page-dashboard')" data-page="page-dashboard">
+            <i class="fas fa-home"></i>
+            <span>Beranda</span>
+        </button>
+        <button class="nav-item" onclick="showPage('page-chat')" data-page="page-chat">
+            <i class="fas fa-robot"></i>
+            <span>Twin AI</span>
+        </button>
+        <button class="nav-item" onclick="showPage('page-future')" data-page="page-future">
+            <i class="fas fa-clock"></i>
+            <span>Masa Depan</span>
+        </button>
+        <button class="nav-item" onclick="showPage('page-target')" data-page="page-target">
+            <i class="fas fa-bullseye"></i>
+            <span>Target</span>
+        </button>
+        <button class="nav-item" onclick="showPage('page-finance')" data-page="page-finance">
+            <i class="fas fa-wallet"></i>
+            <span>Keuangan</span>
+        </button>
+    </nav>
+
+    <script>
+        // =====================================================
+        // ========== DATA LAYER (Local Storage) ===============
+        // =====================================================
+        
+        const APP_KEY = 'helayo_data';
+        
+        function getDefaultData() {
+            return {
+                user: {
+                    name: 'Pengguna',
+                    joined: new Date().toISOString()
+                },
+                finance: {
+                    income: 9200000,
+                    expense: 6800000,
+                    assets: 127500000,
+                    history: []
+                },
+                dreams: [
+                    { id: 1, name: '🏠 Rumah Impian', target: 850000000, progress: 65, year: 2028 },
+                    { id: 2, name: '🚗 Mobil Listrik', target: 450000000, progress: 40, year: 2027 },
+                    { id: 3, name: '🕌 Umroh', target: 35000000, progress: 85, year: 2026 }
+                ],
+                decisions: [],
+                chatHistory: [
+                    { role: 'ai', text: 'Halo! Saya Twin AI. Ada yang bisa saya bantu untuk masa depan Anda hari ini? 😊', time: new Date().toISOString() }
+                ],
+                twinScore: 84,
+                scoreHistory: [84],
+                lastActive: new Date().toISOString(),
+                streak: 14,
+                insights: [
+                    'Kurangi pengeluaran 15% untuk mencapai target rumah 8 bulan lebih cepat.',
+                    'Investasi crypto Anda menunjukkan tren positif minggu ini.',
+                    'Konsistensi adalah kunci. Anda sudah aktif 14 hari berturut-turut!'
+                ]
+            };
+        }
+        
+        function loadData() {
+            try {
+                const raw = localStorage.getItem(APP_KEY);
+                if (!raw) {
+                    const def = getDefaultData();
+                    localStorage.setItem(APP_KEY, JSON.stringify(def));
+                    return def;
+                }
+                const data = JSON.parse(raw);
+                // Ensure all fields exist
+                const def = getDefaultData();
+                for (let key in def) {
+                    if (!(key in data)) data[key] = def[key];
+                }
+                return data;
+            } catch {
+                return getDefaultData();
+            }
+        }
+        
+        function saveData(data) {
+            localStorage.setItem(APP_KEY, JSON.stringify(data));
+        }
+        
+        function getData() {
+            const data = loadData();
+            // Update last active
+            data.lastActive = new Date().toISOString();
+            saveData(data);
+            return data;
+        }
+        
+        function updateData(updates) {
+            const data = getData();
+            Object.assign(data, updates);
+            saveData(data);
+            return data;
+        }
+        
+        // =====================================================
+        // ========== TOAST NOTIFICATION =======================
+        // =====================================================
+        
+        function showToast(message, duration = 2500) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timer);
+            toast._timer = setTimeout(() => toast.classList.remove('show'), duration);
+        }
+        
+        // =====================================================
+        // ========== NAVIGATION ===============================
+        // =====================================================
+        
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.querySelector(`.nav-item[data-page="${pageId}"]`)?.classList.add('active');
+            
+            window.scrollTo(0, 0);
+            
+            // Refresh content when switching pages
+            if (pageId === 'page-dashboard') refreshDashboard();
+            if (pageId === 'page-chat') refreshChat();
+            if (pageId === 'page-future') refreshFuture();
+            if (pageId === 'page-target') refreshDreams();
+            if (pageId === 'page-finance') refreshFinance();
+        }
+        
+        // =====================================================
+        // ========== DASHBOARD ================================
+        // =====================================================
+        
+        function refreshDashboard() {
+            const data = getData();
+            
+            // Twin Score
+            document.getElementById('twinScore').textContent = data.twinScore;
+            document.getElementById('scoreRingText').textContent = data.twinScore;
+            document.getElementById('scoreRing').style.background = 
+                `conic-gradient(#6c5ce7 0% ${data.twinScore}%, #1a1f3a ${data.twinScore}% 100%)`;
+            
+            // Streak & Level
+            document.getElementById('userStreak').textContent = `${data.streak} hari aktif`;
+            const level = data.twinScore >= 80 ? 'Pro' : data.twinScore >= 60 ? 'Menengah' : 'Pemula';
+            document.getElementById('userLevel').textContent = `Level: ${level}`;
+            
+            // Score change
+            if (data.scoreHistory.length > 1) {
+                const prev = data.scoreHistory[data.scoreHistory.length - 2];
+                const curr = data.scoreHistory[data.scoreHistory.length - 1];
+                const diff = curr - prev;
+                const el = document.getElementById('scoreChange');
+                if (diff > 0) {
+                    el.innerHTML = `<i class="fas fa-arrow-up"></i> +${diff}% minggu ini`;
+                    el.className = 'text-xs text-green-400 mt-1';
+                } else if (diff < 0) {
+                    el.innerHTML = `<i class="fas fa-arrow-down"></i> ${diff}% minggu ini`;
+                    el.className = 'text-xs text-red-400 mt-1';
+                } else {
+                    el.innerHTML = 'Stabil minggu ini';
+                    el.className = 'text-xs text-gray-400 mt-1';
+                }
+            }
+            
+            // AI Insight
+            const insightIdx = Math.floor(Math.random() * data.insights.length);
+            document.getElementById('aiInsightText').textContent = data.insights[insightIdx % data.insights.length];
+            document.getElementById('insightTime').textContent = 
+                `Berdasarkan analisis ${Math.floor(Math.random() * 20) + 10} hari terakhir`;
+            
+            // Quick Stats
+            const financeScore = Math.min(100, Math.floor(data.finance.assets / 2000000));
+            document.getElementById('statFinance').textContent = `Rp ${(data.finance.assets / 1000000).toFixed(1)}J`;
+            document.getElementById('statHealth').textContent = `${Math.min(100, 60 + Math.floor(Math.random() * 30))}%`;
+            document.getElementById('statCareer').textContent = `${Math.min(100, 70 + Math.floor(Math.random() * 25))}%`;
+            
+            const avgProgress = data.dreams.length > 0 
+                ? Math.round(data.dreams.reduce((sum, d) => sum + d.progress, 0) / data.dreams.length)
+                : 0;
+            document.getElementById('statTarget').textContent = `${avgProgress}%`;
+            
+            // Radar chart
+            drawRadar(data);
+        }
+        
+        // =====================================================
+        // ========== RADAR CHART ==============================
+        // =====================================================
+        
+        function drawRadar(data) {
+            const canvas = document.getElementById('radarCanvas');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+            const cx = w/2;
+            const cy = h/2;
+            const r = Math.min(w, h) * 0.35;
+            
+            ctx.clearRect(0, 0, w, h);
+            
+            const categories = ['Keuangan', 'Karier', 'Bisnis', 'Kesehatan', 'Relasi', 'Produktivitas'];
+            const values = [
+                Math.min(100, Math.floor(data.finance.assets / 1500000)),
+                Math.min(100, 70 + Math.floor(Math.random() * 25)),
+                Math.min(100, 50 + Math.floor(Math.random() * 30)),
+                Math.min(100, 60 + Math.floor(Math.random() * 30)),
+                Math.min(100, 55 + Math.floor(Math.random() * 35)),
+                Math.min(100, 65 + Math.floor(Math.random() * 25))
+            ];
+            
+            const n = categories.length;
+            
+            // Draw rings
+            for (let ring = 1; ring <= 4; ring++) {
+                ctx.beginPath();
+                const radius = (r / 4) * ring;
+                for (let i = 0; i <= n; i++) {
+                    const angle = (Math.PI * 2 * i / n) - Math.PI/2;
+                    const x = cx + radius * Math.cos(angle);
+                    const y = cy + radius * Math.sin(angle);
+                    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+            
+            // Draw data polygon
+            ctx.beginPath();
+            for (let i = 0; i < n; i++) {
+                const angle = (Math.PI * 2 * i / n) - Math.PI/2;
+                const radius = (values[i] / 100) * r;
+                const x = cx + radius * Math.cos(angle);
+                const y = cy + radius * Math.sin(angle);
+                i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(108, 92, 231, 0.25)';
+            ctx.fill();
+            ctx.strokeStyle = '#6c5ce7';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Draw points & labels
+            for (let i = 0; i < n; i++) {
+                const angle = (Math.PI * 2 * i / n) - Math.PI/2;
+                const radius = (values[i] / 100) * r;
+                const x = cx + radius * Math.cos(angle);
+                const y = cy + radius * Math.sin(angle);
+                
+                // Point
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fillStyle = '#6c5ce7';
+                ctx.fill();
+                
+                // Label
+                const lr = r + 20;
+                const lx = cx + lr * Math.cos(angle);
+                const ly = cy + lr * Math.sin(angle);
+                ctx.fillStyle = '#a29bfe';
+                ctx.font = '9px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(categories[i], lx, ly);
+                
+                // Value
+                const vx = cx + (r * 0.65) * Math.cos(angle);
+                const vy = cy + (r * 0.65) * Math.sin(angle);
+                ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                ctx.font = '8px Inter, sans-serif';
+                ctx.fillText(values[i] + '%', vx, vy);
+            }
+            
+            // Average
+            const avg = Math.round(values.reduce((a, b) => a + b, 0) / n);
+            document.getElementById('radarAvg').textContent = `Skor rata-rata: ${avg}`;
+        }
+        
+        // =====================================================
+        // ========== CHAT =====================================
+        // =====================================================
+        
+        function refreshChat() {
+            const data = getData();
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = '';
+            
+            data.chatHistory.forEach(msg => {
+                const div = document.createElement('div');
+                div.className = msg.role === 'user' ? 'chat-bubble-user' : 'chat-bubble-ai';
+                const time = new Date(msg.time).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+                div.innerHTML = `<p class="text-sm">${msg.text}</p><p class="text-[10px] ${msg.role === 'user' ? 'text-gray-300' : 'text-gray-500'} mt-1">${time}</p>`;
+                container.appendChild(div);
+            });
+            
+            container.scrollTop = container.scrollHeight;
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const data = getData();
+            
+            // Add user message
+            data.chatHistory.push({
+                role: 'user',
+                text: text,
+                time: new Date().toISOString()
+            });
+            
+            // Generate AI response based on context
+            const aiResponse = generateAIResponse(text, data);
+            data.chatHistory.push({
+                role: 'ai',
+                text: aiResponse,
+                time: new Date().toISOString()
+            });
+            
+            // Update twin score (small increment for engagement)
+            data.twinScore = Math.min(100, data.twinScore + 0.5);
+            data.scoreHistory.push(data.twinScore);
+            
+            saveData(data);
+            input.value = '';
+            refreshChat();
+            refreshDashboard();
+        }
+        
+        function generateAIResponse(userInput, data) {
+            const lower = userInput.toLowerCase();
+            
+            if (lower.includes('keuangan') || lower.includes('uang') || lower.includes('finance')) {
+                const income = data.finance.income / 1000000;
+                const expense = data.finance.expense / 1000000;
+                const saving = income - expense;
+                return `💰 Analisis Keuangan Anda:\nPemasukan: Rp ${income.toFixed(1)}J/bulan\nPengeluaran: Rp ${expense.toFixed(1)}J/bulan\nTabungan: Rp ${saving.toFixed(1)}J/bulan\n\n${saving > 2 ? '✅ Keuangan sehat! Pertahankan.' : '⚠️ Coba kurangi pengeluaran untuk lebih optimal.'}`;
+            }
+            
+            if (lower.includes('target') || lower.includes('impian') || lower.includes('dream')) {
+                if (data.dreams.length === 0) return '🎯 Anda belum memiliki target. Yuk tambahkan di menu Target!';
+                const d = data.dreams[0];
+                return `🎯 Target terbesar Anda: ${d.name}\nProgress: ${d.progress}%\nTarget tahun: ${d.year}\n\n${d.progress > 70 ? '✅ Luar biasa! Terus semangat!' : '💪 Tetap konsisten, Anda pasti bisa!'}`;
+            }
+            
+            if (lower.includes('kesehatan') || lower.includes('health')) {
+                return '❤️ Kesehatan adalah investasi terbaik. Saran saya:\n1. Tidur 7-8 jam sehari\n2. Olahraga minimal 30 menit\n3. Minum air 2 liter/hari\n\nSkor kesehatan Anda saat ini: 78%';
+            }
+            
+            if (lower.includes('karir') || lower.includes('kerja') || lower.includes('career')) {
+                return '🚀 Untuk karir yang lebih baik:\n1. Tingkatkan skill 30 menit/hari\n2. Bangun network profesional\n3. Target: naik jabatan dalam 2 tahun\n\nSkor karir Anda: 92% - Sangat baik!';
+            }
+            
+            if (lower.includes('investasi') || lower.includes('saham') || lower.includes('crypto')) {
+                return '📈 Saran investasi untuk Anda:\n1. Diversifikasi: 45% saham, 25% crypto, 20% reksadana, 10% emas\n2. Investasi rutin setiap bulan (DCA)\n3. Target return: 12-15%/tahun\n\nPortofolio Anda sudah cukup baik!';
+            }
+            
+            if (lower.includes('terima kasih') || lower.includes('thanks')) {
+                return '😊 Sama-sama! Saya senang bisa membantu. Ada yang lain yang ingin ditanyakan?';
+            }
+            
+            if (lower.includes('halo') || lower.includes('hai') || lower.includes('hey')) {
+                return `👋 Halo! Senang bertemu dengan Anda lagi. Bagaimana kabar hari ini? Saya siap membantu mewujudkan masa depan terbaik Anda!`;
+            }
+            
+            // Default response with personalization
+            const responses = [
+                `💡 Ide bagus! Saya akan analisis lebih dalam. Sementara itu, ingat: konsistensi lebih penting daripada kecepatan.`,
+                `🤔 Pertanyaan menarik! Berdasarkan data Anda, saya sarankan untuk fokus pada 1 hal besar dulu.`,
+                `📊 Saya sudah cek data Anda. Jika terus seperti ini, masa depan cerah menanti!`,
+                `🧠 Saya belajar dari interaksi kita. Anda semakin baik dalam mengambil keputusan!`,
+                `✨ Teruslah bertanya! Setiap pertanyaan membawa Anda lebih dekat ke versi terbaik diri Anda.`
+            ];
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+        
+        function clearChat() {
+            if (!confirm('Hapus semua chat?')) return;
+            const data = getData();
+            data.chatHistory = [
+                { role: 'ai', text: 'Chat dibersihkan. Ada yang bisa saya bantu? 😊', time: new Date().toISOString() }
+            ];
+            saveData(data);
+            refreshChat();
+            showToast('💬 Chat berhasil dibersihkan');
+        }
+        
+        function toggleVoice() {
+            const btn = document.querySelector('.voice-btn');
+            btn.classList.toggle('active');
+            
+            if (btn.classList.contains('active')) {
+                btn.innerHTML = '<i class="fas fa-microphone-slash text-purple-400 text-sm"></i>';
+                showToast('🎤 Mendengarkan...', 2000);
+                
+                // Simulate voice input with random question
+                const questions = [
+                    'Bagaimana cara saya menabung lebih banyak?',
+                    'Apa target terbaik untuk tahun ini?',
+                    'Bagaimana kondisi keuangan saya?',
+                    'Saya ingin investasi, mulai dari mana?',
+                    'Berapa skor twin saya sekarang?'
+                ];
+                setTimeout(() => {
+                    const q = questions[Math.floor(Math.random() * questions.length)];
+                    document.getElementById('chatInput').value = q;
+                    sendMessage();
+                    btn.classList.remove('active');
+                    btn.innerHTML = '<i class="fas fa-microphone text-purple-400 text-sm"></i>';
+                }, 2000);
+            } else {
+                btn.innerHTML = '<i class="fas fa-microphone text-purple-400 text-sm"></i>';
+            }
+        }
+        
+        // Enter key
+        document.getElementById('chatInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+        
+        // =====================================================
+        // ========== FUTURE / TIME MACHINE ====================
+        // =====================================================
+        
+        function refreshFuture() {
+            const data = getData();
+            const container = document.getElementById('futureList');
+            container.innerHTML = '';
+            
+            const years = [
+                { label: '1 Tahun Lagi', score: Math.min(100, data.twinScore + Math.floor(Math.random() * 10) - 5) },
+                { label: '5 Tahun Lagi', score: Math.min(100, data.twinScore + Math.floor(Math.random() * 20) - 10) },
+                { label: '10 Tahun Lagi', score: Math.min(100, data.twinScore + Math.floor(Math.random() * 30) - 15) }
+            ];
+            
+            years.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = 'glass rounded-xl p-4 cursor-pointer feature-card';
+                const colors = ['purple', 'blue', 'green'];
+                const statuses = ['On track', 'Perlu perhatian', 'Perubahan besar!'];
+                const icons = ['✅', '⚠️', '🔴'];
+                const statusIdx = item.score >= 70 ? 0 : item.score >= 50 ? 1 : 2;
+                
+                div.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-${colors[idx]}-400">${item.label}</p>
+                            <p class="text-xs text-gray-400">Skor proyeksi: ${item.score}</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-500"></i>
+                    </div>
+                    <div class="progress-bar mt-2">
+                        <div class="fill" style="width: ${item.score}%"></div>
+                    </div>
+                    <p class="text-xs ${item.score >= 70 ? 'text-green-400' : item.score >= 50 ? 'text-yellow-400' : 'text-red-400'} mt-1">
+                        ${icons[statusIdx]} ${statuses[statusIdx]}
+                    </p>
+                `;
+                div.onclick = () => showFutureDetail(item.label, item.score);
+                container.appendChild(div);
+            });
+            
+            // Update simulator
+            const score = data.twinScore;
+            document.getElementById('bestScenario').textContent = `+${Math.round(score * 4)}%`;
+            document.getElementById('normalScenario').textContent = `+${Math.round(score * 1.2)}%`;
+            document.getElementById('worstScenario').textContent = `-${Math.round((100 - score) * 0.8)}%`;
+        }
+        
+        function showFutureDetail(label, score) {
+            const messages = [
+                `🔮 Proyeksi ${label}:\n\nSkor Twin: ${score}\nKeuangan: ${Math.min(100, score + Math.floor(Math.random() * 10) - 5)}%\nKarier: ${Math.min(100, score + Math.floor(Math.random() * 10) - 5)}%\nKesehatan: ${Math.min(100, score + Math.floor(Math.random() * 10) - 5)}%\n\n💡 ${score >= 70 ? 'Anda berada di jalur yang tepat! Pertahankan.' : 'Masih ada waktu untuk berubah. Mulai dari sekarang!'}`,
+                `📊 Analisis ${label}:\n\n${score >= 70 ? '✅ Kondisi sangat baik' : score >= 50 ? '⚠️ Perlu perbaikan' : '🔴 Butuh aksi cepat'}\n\nRekomendasi: ${score >= 70 ? 'Teruskan kebiasaan baik!' : 'Fokus pada 1 area yang paling lemah.'}`
+            ];
+            alert(messages[Math.floor(Math.random() * messages.length)]);
+        }
+        
+        function simulateFuture() {
+            const btn = event.target.closest('button');
+            const origText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Menganalisis...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                const data = getData();
+                // Update score based on simulation
+                const change = Math.floor(Math.random() * 10) - 2;
+                data.twinScore = Math.min(100, Math.max(0, data.twinScore + change));
+                data.scoreHistory.push(data.twinScore);
+                
+                // Add insight
+                const insight = `📊 Hasil simulasi: Skor Twin ${change >= 0 ? 'naik' : 'turun'} ${Math.abs(change)} poin. ${change >= 0 ? 'Teruskan!' : 'Evaluasi kembali strategi Anda.'}`;
+                data.insights.push(insight);
+                if (data.insights.length > 10) data.insights.shift();
+                
+                saveData(data);
+                refreshDashboard();
+                refreshFuture();
+                
+                btn.innerHTML = '✅ Selesai! Lihat hasil di Time Machine';
+                btn.className = 'btn-primary w-full mt-3 text-sm bg-green-500';
+                showToast('🎯 Simulasi selesai! Skor diperbarui.');
+                
+                setTimeout(() => {
+                    btn.className = 'btn-primary w-full mt-3 text-sm';
+                    btn.innerHTML = origText;
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+        }
+        
+        function saveDecision() {
+            const input = document.getElementById('decisionInput');
+            const text = input.value.trim();
+            if (!text) {
+                showToast('✏️ Tulis keputusan terlebih dahulu');
+                return;
+            }
+            
+            const data = getData();
+            data.decisions.push({
+                id: Date.now(),
+                text: text,
+                date: new Date().toISOString()
+            });
+            saveData(data);
+            input.value = '';
+            showToast('✅ Keputusan tersimpan!');
+            refreshFuture();
+        }
+        
+        // =====================================================
+        // ========== TARGET / DREAM TRACKER ===================
+        // =====================================================
+        
+        function refreshDreams() {
+            const data = getData();
+            const container = document.getElementById('dreamList');
+            container.innerHTML = '';
+            
+            if (data.dreams.length === 0) {
+                container.innerHTML = `
+                    <div class="glass rounded-xl p-6 text-center">
+                        <p class="text-gray-400">Belum ada target. Yuk tambahkan!</p>
+                    </div>
+                `;
+            } else {
+                data.dreams.forEach(dream => {
+                    const div = document.createElement('div');
+                    div.className = 'glass rounded-xl p-4';
+                    const progressColor = dream.progress >= 70 ? 'text-green-400' : dream.progress >= 40 ? 'text-yellow-400' : 'text-red-400';
+                    div.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-bold">${dream.name}</p>
+                                <p class="text-xs text-gray-400">Target: ${dream.year} · Rp ${(dream.target / 1000000).toFixed(0)}J</p>
+                            </div>
+                            <span class="text-xs ${progressColor}">${dream.progress}%</span>
+                        </div>
+                        <div class="progress-bar mt-2">
+                            <div class="fill" style="width: ${dream.progress}%"></div>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <button class="text-xs text-purple-400" onclick="updateDreamProgress(${dream.id}, 5)">+5%</button>
+                            <button class="text-xs text-red-400" onclick="deleteDream(${dream.id})">Hapus</button>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+            
+            // Update overview
+            const total = data.dreams.length;
+            document.getElementById('totalTargets').textContent = total;
+            if (total > 0) {
+                const avg = Math.round(data.dreams.reduce((sum, d) => sum + d.progress, 0) / total);
+                document.getElementById('avgProgress').textContent = avg + '%';
+                document.getElementById('overallProgress').style.width = avg + '%';
+            } else {
+                document.getElementById('avgProgress').textContent = '0%';
+                document.getElementById('overallProgress').style.width = '0%';
+            }
+        }
+        
+        function addDream() {
+            const name = prompt('🎯 Masukkan impian baru:');
+            if (!name) return;
+            
+            const targetStr = prompt('💰 Target dana (dalam Juta Rupiah):');
+            const target = parseFloat(targetStr);
+            if (isNaN(target) || target <= 0) {
+                showToast('❌ Target harus angka valid');
+                return;
+            }
+            
+            const year = prompt('📅 Target tahun (contoh: 2028):');
+            const yearNum = parseInt(year);
+            if (isNaN(yearNum) || yearNum < new Date().getFullYear()) {
+                showToast('❌ Tahun harus valid dan ke depan');
+                return;
+            }
+            
+            const data = getData();
+            data.dreams.push({
+                id: Date.now(),
+                name: name,
+                target: target * 1000000,
+                progress: 0,
+                year: yearNum
+            });
+            saveData(data);
+            refreshDreams();
+            refreshDashboard();
+            showToast(`✅ "${name}" ditambahkan!`);
+        }
+        
+        function updateDreamProgress(id, amount) {
+            const data = getData();
+            const dream = data.dreams.find(d => d.id === id);
+            if (dream) {
+                dream.progress = Math.min(100, dream.progress + amount);
+                saveData(data);
+                refreshDreams();
+                refreshDashboard();
+                if (dream.progress >= 100) {
+                    showToast(`🎉 Selamat! "${dream.name}" tercapai!`);
+                }
+            }
+        }
+        
+        function deleteDream(id) {
+            if (!confirm('Hapus target ini?')) return;
+            const data = getData();
+            data.dreams = data.dreams.filter(d => d.id !== id);
+            saveData(data);
+            refreshDreams();
+            refreshDashboard();
+            showToast('🗑️ Target dihapus');
+        }
+        
+        // =====================================================
+        // ========== FINANCE ==================================
+        // =====================================================
+        
+        function refreshFinance() {
+            const data = getData();
+            
+            document.getElementById('totalAsset').textContent = `Rp ${(data.finance.assets / 1000000).toFixed(1)}J`;
+            document.getElementById('incomeDisplay').textContent = `Rp ${(data.finance.income / 1000000).toFixed(1)}J`;
+            document.getElementById('expenseDisplay').textContent = `Rp ${(data.finance.expense / 1000000).toFixed(1)}J`;
+            
+            const growth = ((data.finance.income - data.finance.expense) / data.finance.income * 100).toFixed(1);
+            document.getElementById('assetGrowth').innerHTML = 
+                `${growth >= 0 ? '<i class="fas fa-arrow-up"></i>' : '<i class="fas fa-arrow-down"></i>'} ${growth}%`;
+            document.getElementById('assetGrowth').className = `text-xs ${growth >= 0 ? 'text-green-400' : 'text-red-400'}`;
+            
+            // Financial insights
+            const container = document.getElementById('financialInsights');
+            container.innerHTML = '';
+            
+            const saving = data.finance.income - data.finance.expense;
+            const insights = [];
+            
+            if (saving > data.finance.income * 0.3) {
+                insights.push('✅ Keuangan sehat! Tabungan > 30% dari pemasukan.');
+            } else if (saving > 0) {
+                insights.push(`⚠️ Tabungan ${(saving / 1000000).toFixed(1)}J/bulan. Coba naikkan ke 30% dari pemasukan.`);
+            } else {
+                insights.push('🔴 Pengeluaran melebihi pemasukan! Segera evaluasi.');
+            }
+            
+            if (data.dreams.length > 0) {
+                const dream = data.dreams[0];
+                const monthsNeeded = (dream.target - (data.finance.assets * dream.progress / 100)) / saving;
+                if (monthsNeeded > 0 && monthsNeeded < 120) {
+                    insights.push(`💡 Target "${dream.name}" bisa tercapai dalam ${Math.round(monthsNeeded)} bulan jika konsisten.`);
+                }
+            }
+            
+            insights.forEach(text => {
+                const div = document.createElement('div');
+                div.className = `glass rounded-xl p-4 border-l-4 ${text.includes('✅') ? 'border-green-400' : text.includes('⚠️') ? 'border-yellow-400' : 'border-red-400'} mt-2`;
+                div.innerHTML = `<p class="text-sm">${text}</p>`;
+                container.appendChild(div);
+            });
+            
+            // Portfolio
+            const portfolio = document.getElementById('portfolioList');
+            portfolio.innerHTML = '';
+            const assets = [
+                { name: 'Saham', percent: 45, value: data.finance.assets * 0.45 },
+                { name: 'Crypto', percent: 25, value: data.finance.assets * 0.25 },
+                { name: 'Reksadana', percent: 20, value: data.finance.assets * 0.20 },
+                { name: 'Emas', percent: 10, value: data.finance.assets * 0.10 }
+            ];
+            
+            assets.forEach(a => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <div class="flex justify-between text-xs">
+                        <span>${a.name}</span>
+                        <span>${a.percent}% · Rp ${(a.value / 1000000).toFixed(0)}J</span>
+                    </div>
+                    <div class="progress-bar mt-1">
+                        <div class="fill" style="width: ${a.percent}%"></div>
+                    </div>
+                `;
+                portfolio.appendChild(div);
+            });
+        }
+        
+        function updateFinance(type) {
+            const amountStr = prompt(`${type === 'income' ? '💰 Masukkan pemasukan' : '💸 Masukkan pengeluaran'} (dalam Juta Rupiah):`);
+            const amount = parseFloat(amountStr);
+            if (isNaN(amount) || amount <= 0) {
+                showToast('❌ Masukkan angka valid');
+                return;
+            }
+            
+            const data = getData();
+            const amountInRupiah = amount * 1000000;
+            
+            if (type === 'income') {
+                data.finance.income += amountInRupiah;
+                data.finance.assets += amountInRupiah;
+                showToast(`✅ Pemasukan +Rp ${amount}J`);
+            } else {
+                if (amountInRupiah > data.finance.assets) {
+                    showToast('⚠️ Pengeluaran melebihi aset!');
+                }
+                data.finance.expense += amountInRupiah;
+                data.finance.assets = Math.max(0, data.finance.assets - amountInRupiah);
+                showToast(`💸 Pengeluaran -Rp ${amount}J`);
+            }
+            
+            // Update twin score based on financial health
+            const savingRate = (data.finance.income - data.finance.expense) / data.finance.income;
+            const scoreAdjust = Math.round(savingRate * 20);
+            data.twinScore = Math.min(100, Math.max(0, data.twinScore + scoreAdjust));
+            data.scoreHistory.push(data.twinScore);
+            
+            saveData(data);
+            refreshFinance();
+            refreshDashboard();
+        }
+        
+        // =====================================================
+        // ========== RESET DATA ===============================
+        // =====================================================
+        
+        function resetData() {
+            if (!confirm('⚠️ Reset semua data? Ini akan menghapus semua progress Anda!')) return;
+            const def = getDefaultData();
+            saveData(def);
+            showToast('🔄 Data direset ke default');
+            refreshAll();
+        }
+        
+        function refreshAll() {
+            refreshDashboard();
+            refreshChat();
+            refreshFuture();
+            refreshDreams();
+            refreshFinance();
+        }
+        
+        // =====================================================
+        // ========== INIT =====================================
+        // =====================================================
+        
+        // Load data and render
+        refreshAll();
+        
+        // Update header version
+        document.getElementById('headerVersion').textContent = 'v2.0 REAL · ' + new Date().toLocaleDateString('id-ID');
+        
+        console.log('🧠 HELAYO LIFE TWIN AI - VERSION 2.0 REAL');
+        console.log('✨ Semua data disimpan di Local Storage!');
+        console.log('📊 Data: ', getData());
+        console.log('💡 Fitur REAL: Chat, Target, Keuangan, Simulasi, dan banyak lagi!');
+        
+        // Auto-save every minute
+        setInterval(() => {
+            const data = getData();
+            data.lastActive = new Date().toISOString();
+            saveData(data);
+        }, 60000);
+    </script>
+
+</body>
+  </html>
